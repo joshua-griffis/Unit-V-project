@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounty Board</title>
+    <link rel="stylesheet" href="{% static 'styles.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="second_body">
+    <div class='header1'>
+        <a href="{% url 'home' %}">
+            <div class='target'>
+                <img class="img_top" src="{% static 'white_target.png' %}" alt="target">
+                
+                <img class="img_bottom" title="back" src="{% static 'target.png' %}" alt="target">
+               
+            </div>
+        </a>
+        <p><a href="{% url 'logout' %}">LOGOUT</a></p>
+    </div>
+    
+    {%block content%}
+    <div class='container1'>
+        <div class='intro'>
+            <h1>Welcome {{request.user}}!</h1>
+        </div>
+        <a href="{% url 'create_bounty' %}">
+            <div class="button_m">
+                <p>Create Bounty</p>
+            </div>
+        </a>
+        <a href="{% url 'view' %}">
+            <div class="button_m">
+                <p>View Bounties</p>
+            </div>
+        </a>
+        <a href="{% url 'customer_complete' %}">
+            <div class="button_m">
+                <p>Completed</p>
+            </div>
+        </a>
+    </div>   
+    {%endblock content%}
+</body>
+</html>

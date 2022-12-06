@@ -1,0 +1,26 @@
+{% extends 'base_reglog.html' %}
+{% block content %}
+{%load static%}
+    <div class='redhand'>
+        <img src="{% static 'red_hand.png' %}" alt="RedHand">
+    </div>
+    <form method="POST" action=''>
+        {% csrf_token %}
+        <div class='signup_container'>
+            <h1 class='title1'>Login</h1>
+            <input type="text" name="username" placeholder="Username..." >
+            <input type="password" name="password" placeholder="Password..." >
+
+            <div class='buttons'>
+                <input type="submit" id='login_1' value="Login">
+                    <div class='to_LogInBOX'>
+                    <a href="{% url 'register' %}" class='to_LogIn'>Sign Up</a>
+                </div>
+            </div>
+            {% for message in messages %}
+                <p class='error_message'>{{message}}</p>
+            {% endfor %}
+        </div>
+    </form>
+    
+{% endblock content %}

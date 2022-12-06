@@ -1,0 +1,40 @@
+{% extends 'hunter_base.html' %} 
+{%block content%}
+{%load static%}
+<div class='container3'>
+    {% for post in posts %}
+        <div class="post">
+            <h1>WANTED</h1>
+            <div class='d_or_a'>
+                {% if post.dead_or_alive == "Either" %}
+                    <p>DEAD OR ALIVE</p>
+                    {% else %}
+                        <p>{{post.dead_or_alive}}</p>
+                {% endif %}
+            </div>
+            <div class='name'>{{post.target_name}}</div>
+            <div class='frame'>
+
+                <div class="card-flip">
+
+                    <div class="picture">
+                        <img src="{% static "face.png" %}" alt=""> 
+                    </div>
+
+                    <div class="hide">
+                        <p>Description:</p>
+                        <p>{{post.description}}</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class='money'>${{post.bounty}}</div>
+            <div class='set_btn'>
+                <a href="{% url 'completed' post.id %}"><div id='blue_btn' class='btn10'><p>Done</p></div></a>
+                <a href="{% url 'remove' post.id %}"><div id='red_btn' class='btn10'><p>Remove</p></div></a>
+            </div>
+        </div>
+        
+    {% endfor %}
+</div>
+{%endblock content%}

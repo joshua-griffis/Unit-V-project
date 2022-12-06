@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{%block content%}
+<form action="" method="POST" class='container2'>
+    {%csrf_token%} 
+    <div class="contents1">
+        <h3>Edit Bounty.</h3>  
+        <div class='contents2'>
+            <div>
+                <div>
+                    <p>Name of Target:</p>
+                    <input name='name9' id='name_9' type="text" value='{{form.target_name}}'> 
+                </div>
+                <div>
+                    <p>Bounty Amount:</p>
+                    <input name='bounty9' id='bounty_9' type="number" value='{{form.bounty}}'>
+                </div>
+                <div>
+                    <p>Preference:</p>
+                    <input name='pref9' id='pref_9' type="text" value='{{form.dead_or_alive}}'>
+                </div>
+                </div>
+                <div>
+                    <p>Description:</p>
+                    <input name='des9' id='des_9' type="text" value='{{form.description}}'>
+                </div>
+        </div> 
+        <div class='grp_btn'>
+            <a href="{% url 'view' %}"><div class='back_btn'><p>Back</p></div></a>
+            <input id='crt_bounty' type="submit" value='Update'>
+        </div>
+        
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    </div>
+</form> 
+{%endblock content%}

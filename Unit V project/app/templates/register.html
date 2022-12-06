@@ -1,0 +1,45 @@
+{% extends 'base_reglog.html' %}
+{% load static %}
+{% block content %}
+    <div class='redhand'>
+        <img src="{% static 'red_hand.png' %}" alt="RedHand">
+    </div>
+    <form method='POST' action="">
+        {% csrf_token %}
+        <div class='signup_container'>
+            <h1 class='title'>Registration</h1>     
+            
+            <input placeholder="Username..." {{form.username}}
+            <input placeholder="Password..." {{form.password1}} 
+            <input placeholder="Confirm Password..." {{form.password2}}
+            {% comment %} ^^Actual Form to Create User {% endcomment %}
+        
+            <div class='CHOICES'>
+                <fieldset>
+                    <legend>Choose One</legend>
+                    <div class='first_choice'>
+                        <input type="radio" id="contactChoice1" name="choice" value="Customer" />
+                        <label for="contactChoice1">Customer</label>
+                    </div>
+                    <div class='second_choice'>
+                        <input type="radio" id="contactChoice2" name="choice" value="Bounty Hunter" />
+                        <label for="contactChoice2">Bounty Hunter</label>
+                    </div>
+                </fieldset>
+            </div>
+            {% comment %} ^^Ask which group they would like to be assigned to {% endcomment %}
+
+            <div class='buttons'>
+                <input id='register_input' type="submit" value="Register">
+                <div class='to_LogInBOX'>
+                    <a href="{% url 'login' %}" class='to_LogIn'>Log In</a>
+                </div>
+            </div>
+            {% comment %} ^^The buttons {% endcomment %}
+
+            <div class='form_errors1'>
+                {{form.errors}}
+            </div>
+        </div>
+    </form>
+{% endblock content %}

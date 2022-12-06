@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{%block content%}
+<form action="" method="POST" class='container2'>
+    {%csrf_token%} 
+    <div class="contents1">
+        <h3>Create a Bounty!</h3>  
+        <div class='contents2'>
+            <div>
+                <div>
+                    <p>Name of Target:</p>
+                    {{form.target_name}}
+                </div>
+                <div>
+                    <p>Bounty Amount:</p>
+                    {{form.bounty}}
+                </div>
+                <div>
+                    <p>Preference:</p>
+                    {{form.dead_or_alive}}
+                </div>
+            </div>
+            <div>
+                <p>Description:</p>
+                {{form.description}}
+            </div>
+        </div> 
+        <input id='crt_bounty' type="submit" value='Create'>
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    </div>
+</form> 
+{%endblock content%}
